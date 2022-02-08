@@ -1,5 +1,4 @@
 require 'pry'
-require './lib/space'
 require './lib/board'
 require './lib/game'
 
