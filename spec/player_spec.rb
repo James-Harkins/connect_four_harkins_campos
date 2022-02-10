@@ -15,4 +15,11 @@ RSpec.describe Player do
     end
   end
 
+  describe '# has_won?' do
+    it 'has won' do
+      board = Board.new
+      @player.has_won?(board)
+    end
+  end
+
 end
