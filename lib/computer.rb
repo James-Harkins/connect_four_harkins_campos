@@ -9,6 +9,21 @@ class Computer
     @has_won = false
   end
 
+  def check_for_horizontal_victory
+  end
+
+  def check_for_vertical_victory
+  end
+
+  def check_for_diagonal_victory
+  end
+
+  def check_for_victory
+    if check_for_horizontal_victory || check_for_vertical_victory || check_for_diagonal_victory
+      @has_won = true
+    end
+  end
+
   def place_piece(board)
     selection = board.spaces[0].sample
 
@@ -28,5 +43,5 @@ class Computer
       place_piece(board)
     end
   end
-  
+
 end

@@ -24,7 +24,18 @@ class Game
       @board.print_board
       p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
       @player.place_piece(@board)
+      @player.check_for_victory
+        if @player.has_won
+          run_game
       @computer.place_piece(@board)
+      @computer.check_for_victory
+    end
+    if @player.has_won
+      p "Player wins!"
+      start
+    elsif @computer.has_won
+      p "Computer wins!"
+      start
     end
   end
 
