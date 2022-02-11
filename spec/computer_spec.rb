@@ -25,6 +25,7 @@ RSpec.describe Computer do
       board.spaces[1][3] = "O"
 
       expect(@computer.check_for_horizontal_victory(board)).to eq(true)
+      expect(@computer.has_won).to eq(true)
     end
 
     it 'can detect any horizontal victory' do
@@ -36,6 +37,7 @@ RSpec.describe Computer do
       board.spaces[4][5] = "O"
 
       expect(@computer.check_for_horizontal_victory(board)).to eq(true)
+      expect(@computer.has_won).to eq(true)
     end
   end
 
