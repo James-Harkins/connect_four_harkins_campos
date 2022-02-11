@@ -15,10 +15,29 @@ RSpec.describe Player do
     end
   end
 
-  describe '# has_won?' do
-    it 'has won' do
+  describe '#check_for_horizontal_victory' do
+    it 'can detect horizontal vicotry' do
       board = Board.new
-      @player.has_won?(board)
+
+      board.spaces[1][0] = "X"
+      board.spaces[1][1] = "X"
+      board.spaces[1][2] = "X"
+      board.spaces[1][3] = "X"
+
+      expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      expect(@player.has_won).to eq(true)
+    end
+
+    it 'can detect any horizontal victory' do
+      board = Board.new
+
+      board.spaces[4][2] = "X"
+      board.spaces[4][3] = "X"
+      board.spaces[4][4] = "X"
+      board.spaces[4][5] = "X"
+
+      expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      expect(@player.has_won).to eq(true)
     end
   end
 

@@ -9,6 +9,26 @@ class Player
     @has_won = false
   end
 
+  def check_for_horizontal_victory(board)
+    board.spaces.each do |row|
+      row.each_cons(4) do |consecutive_spaces|
+        if consecutive_spaces[0] == "X" &&
+           consecutive_spaces[1] == "X" &&
+           consecutive_spaces[2] == "X" &&
+           consecutive_spaces[3] == "X"
+          @has_won = true
+          return true
+        end
+      end
+    end
+  end
+
+  def check_for_vertical_victory
+  end
+
+  def check_for_diagonal_victory
+  end
+
   def place_piece(board)
     user_input = gets.chomp
 
