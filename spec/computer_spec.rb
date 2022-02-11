@@ -41,7 +41,28 @@ RSpec.describe Computer do
     end
   end
 
+  describe '#check_for_vertical_victory' do
+    it 'can detect vertical victory' do
+      board = Board.new
+      board.spaces[1][0] = "O"
+      board.spaces[2][0] = "O"
+      board.spaces[3][0] = "O"
+      board.spaces[4][0] = "O"
 
+      expect(@computer.check_for_vertical_victory(board)).to eq(true)
+      expect(@computer.has_won).to eq(true)
+    end
 
+    it 'can detect any vertical victory' do
+      board = Board.new
 
+      board.spaces[3][2] = "O"
+      board.spaces[4][2] = "O"
+      board.spaces[5][2] = "O"
+      board.spaces[6][2] = "O"
+
+      expect(@computer.check_for_vertical_victory(board)).to eq(true)
+      expect(@computer.has_won).to eq(true)
+    end
+  end
 end
