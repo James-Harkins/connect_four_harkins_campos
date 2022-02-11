@@ -16,6 +16,7 @@ class Player
            consecutive_spaces[1] == "X" &&
            consecutive_spaces[2] == "X" &&
            consecutive_spaces[3] == "X"
+          @has_won = true
           return true
         end
       end

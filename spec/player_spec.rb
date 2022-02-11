@@ -25,6 +25,7 @@ RSpec.describe Player do
       board.spaces[1][3] = "X"
 
       expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      expect(@player.has_won).to eq(true)
     end
 
     it 'can detect any horizontal victory' do
@@ -36,6 +37,7 @@ RSpec.describe Player do
       board.spaces[4][5] = "X"
 
       expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      expect(@player.has_won).to eq(true)
     end
   end
 
