@@ -9,14 +9,6 @@ class Player
     @has_won = false
   end
 
-  def has_won?(board)
-    board.spaces.each do |row|
-      row.each do |column|
-      binding.pry
-      end
-    end
-  end
-
   def place_piece(board)
     user_input = gets.chomp
     if user_input == "A" || user_input == "a"
