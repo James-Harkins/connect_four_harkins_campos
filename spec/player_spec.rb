@@ -42,7 +42,7 @@ RSpec.describe Player do
   end
 
   describe '#check_for_vertical_victory' do
-    it 'can detect vertical victory' do
+    it 'can detect for specific vertical victory' do
       board = Board.new
       board.spaces[1][0] = "X"
       board.spaces[2][0] = "X"
