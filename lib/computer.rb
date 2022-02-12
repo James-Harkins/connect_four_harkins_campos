@@ -17,7 +17,6 @@ class Computer
            consecutive_spaces[2] == "O" &&
            consecutive_spaces[3] == "O"
           @has_won = true
-          return true
         end
       end
     end
@@ -45,7 +44,6 @@ class Computer
            consecutive_spaces[2] == "O" &&
            consecutive_spaces[3] == "O"
           @has_won = true
-          return true
         end
       end
     end
@@ -72,6 +70,10 @@ class Computer
     if !valid_space
       place_piece(board)
     end
+  end
+
+  def reset_computer
+    @has_won = false
   end
 
 end
