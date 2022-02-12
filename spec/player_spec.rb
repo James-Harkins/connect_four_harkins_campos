@@ -64,5 +64,5 @@ RSpec.describe Player do
       expect(@player.check_for_vertical_victory(board)).to eq(true)
       expect(@player.has_won).to eq(true)
     end
-  end 
+  end
 end
