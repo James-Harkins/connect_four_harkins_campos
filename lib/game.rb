@@ -27,17 +27,21 @@ class Game
       @player.check_for_horizontal_victory(@board)
       @player.check_for_vertical_victory(@board)
       @player.check_for_diagonal_victory
+
       if @player.has_won
         run_game
       end
+
       @computer.place_piece(@board)
       @computer.check_for_horizontal_victory(@board)
       @computer.check_for_vertical_victory(@board)
       @computer.check_for_diagonal_victory
+
       if @computer.has_won
         run_game
       end
     end
+
     if @player.has_won
       p "You win!"
       @board.reset_board
