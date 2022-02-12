@@ -20,7 +20,7 @@ class Game
   end
 
   def run_game
-    until @player.has_won || @computer.has_won
+    until @player.has_won || @computer.has_won || @board.draw?
       @board.print_board
       p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
       @player.place_piece(@board)
@@ -43,14 +43,21 @@ class Game
     end
 
     if @player.has_won
+      @board.print_board
       p "You win!"
       @board.reset_board
       @player.reset_player
       start
     elsif @computer.has_won
+      @board.print_board
       p "Computer wins..."
       @board.reset_board
       @computer.reset_computer
+      start
+    elsif @board.draw?
+      @board.print_board
+      p "DRAW!"
+      @board.reset_board
       start
     end
   end
