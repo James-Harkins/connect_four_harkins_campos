@@ -23,7 +23,32 @@ class Player
     end
   end
 
-  def check_for_vertical_victory
+  def check_for_vertical_victory(board)
+    columns = [
+      [], [], [], [], [], [], []
+    ]
+
+    board.spaces.each do |row|
+      columns[0] << row[0]
+      columns[1] << row[1]
+      columns[2] << row[2]
+      columns[3] << row[3]
+      columns[4] << row[4]
+      columns[5] << row[5]
+      columns[6] << row[6]
+    end
+
+    columns.each do |column|
+      column.each_cons(4) do |consecutive_spaces|
+        if consecutive_spaces[0] == "X" &&
+           consecutive_spaces[1] == "X" &&
+           consecutive_spaces[2] == "X" &&
+           consecutive_spaces[3] == "X"
+          @has_won = true
+          return true
+        end
+      end
+    end
   end
 
   def check_for_diagonal_victory
