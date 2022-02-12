@@ -24,7 +24,7 @@ RSpec.describe Player do
       board.spaces[1][2] = "X"
       board.spaces[1][3] = "X"
 
-      expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      @player.check_for_horizontal_victory(board)
       expect(@player.has_won).to eq(true)
     end
 
@@ -36,7 +36,7 @@ RSpec.describe Player do
       board.spaces[4][4] = "X"
       board.spaces[4][5] = "X"
 
-      expect(@player.check_for_horizontal_victory(board)).to eq(true)
+      @player.check_for_horizontal_victory(board)
       expect(@player.has_won).to eq(true)
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe Player do
       board.spaces[3][0] = "X"
       board.spaces[4][0] = "X"
 
-      expect(@player.check_for_vertical_victory(board)).to eq(true)
+      @player.check_for_vertical_victory(board)
       expect(@player.has_won).to eq(true)
     end
 
@@ -61,8 +61,24 @@ RSpec.describe Player do
       board.spaces[5][2] = "X"
       board.spaces[6][2] = "X"
 
-      expect(@player.check_for_vertical_victory(board)).to eq(true)
+      @player.check_for_vertical_victory(board)
       expect(@player.has_won).to eq(true)
+    end
+  end
+
+  describe '#reset_player' do
+    it 'can reset players has_won status' do
+      board = Board.new
+
+      board.spaces[3][2] = "X"
+      board.spaces[4][2] = "X"
+      board.spaces[5][2] = "X"
+      board.spaces[6][2] = "X"
+
+      @player.check_for_vertical_victory(board)
+      expect(@player.has_won).to eq(true)
+      @player.reset_player
+      expect(@player.has_won).to eq(false)
     end
   end
 end

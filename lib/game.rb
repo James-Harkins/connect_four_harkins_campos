@@ -25,14 +25,14 @@ class Game
       p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
       @player.place_piece(@board)
       @player.check_for_horizontal_victory(@board)
-      @player.check_for_vertical_victory
+      @player.check_for_vertical_victory(@board)
       @player.check_for_diagonal_victory
       if @player.has_won
         run_game
       end
       @computer.place_piece(@board)
       @computer.check_for_horizontal_victory(@board)
-      @computer.check_for_vertical_victory
+      @computer.check_for_vertical_victory(@board)
       @computer.check_for_diagonal_victory
       if @computer.has_won
         run_game
@@ -41,10 +41,12 @@ class Game
     if @player.has_won
       p "You win!"
       @board.reset_board
+      @player.reset_player
       start
     elsif @computer.has_won
       p "Computer wins..."
       @board.reset_board
+      @computer.reset_computer
       start
     end
   end

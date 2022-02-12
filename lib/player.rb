@@ -17,7 +17,6 @@ class Player
            consecutive_spaces[2] == "X" &&
            consecutive_spaces[3] == "X"
           @has_won = true
-          return true
         end
       end
     end
@@ -45,7 +44,6 @@ class Player
            consecutive_spaces[2] == "X" &&
            consecutive_spaces[3] == "X"
           @has_won = true
-          return true
         end
       end
     end
@@ -78,5 +76,9 @@ class Player
       p "Invalid input. Please select another column."
       place_piece(board)
     end
+  end
+
+  def reset_player
+    @has_won = false
   end
 end
