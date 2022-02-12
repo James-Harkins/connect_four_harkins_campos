@@ -66,6 +66,56 @@ RSpec.describe Computer do
     end
   end
 
+  describe '#check_for_diagonal_victory' do
+    it ' can detect northeast diagonal victory' do
+      board = Board.new
+
+      board.spaces[4][0] = "O"
+      board.spaces[3][1] = "O"
+      board.spaces[2][2] = "O"
+      board.spaces[1][3] = "O"
+
+      @computer.check_for_diagonal_victory(board)
+      expect(@computer.has_won).to eq(true)
+    end
+
+    it ' can detect any northeast diagonal victory' do
+      board = Board.new
+
+      board.spaces[5][2] = "O"
+      board.spaces[4][3] = "O"
+      board.spaces[3][4] = "O"
+      board.spaces[2][5] = "O"
+
+      @computer.check_for_diagonal_victory(board)
+      expect(@computer.has_won).to eq(true)
+    end
+
+    it ' can detect northwest diagonal victory' do
+      board = Board.new
+
+      board.spaces[6][3] = "O"
+      board.spaces[5][2] = "O"
+      board.spaces[4][1] = "O"
+      board.spaces[3][0] = "O"
+
+      @computer.check_for_diagonal_victory(board)
+      expect(@computer.has_won).to eq(true)
+    end
+
+    it ' can detect any northwest diagonal victory' do
+      board = Board.new
+
+      board.spaces[4][4] = "O"
+      board.spaces[3][3] = "O"
+      board.spaces[2][2] = "O"
+      board.spaces[1][1] = "O"
+
+      @computer.check_for_diagonal_victory(board)
+      expect(@computer.has_won).to eq(true)
+    end
+  end
+
   describe '#reset_computer' do
     it 'can reset computer has_won status' do
       board = Board.new
