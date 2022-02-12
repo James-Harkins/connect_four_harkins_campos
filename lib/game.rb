@@ -26,7 +26,7 @@ class Game
       @player.place_piece(@board)
       @player.check_for_horizontal_victory(@board)
       @player.check_for_vertical_victory(@board)
-      @player.check_for_diagonal_victory
+      @player.check_for_diagonal_victory(@board)
 
       if @player.has_won
         run_game
@@ -35,7 +35,7 @@ class Game
       @computer.place_piece(@board)
       @computer.check_for_horizontal_victory(@board)
       @computer.check_for_vertical_victory(@board)
-      @computer.check_for_diagonal_victory
+      @computer.check_for_diagonal_victory(@board)
 
       if @computer.has_won
         run_game
