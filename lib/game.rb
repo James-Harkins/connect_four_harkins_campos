@@ -8,6 +8,8 @@ class Game
     @player_one = player_one
     @player_two = player_two
     @computer = computer
+    @player_one_name = ""
+    @player_two_name = ""
   end
 
   def start
@@ -16,12 +18,17 @@ class Game
 
     @board.print_board
     user_input = gets.chomp
+
     if user_input == "P" || user_input == "p"
       p "Please enter 1 for single-player or 2 for two-player."
       num_players = gets.chomp.to_i
       if num_players == 1
         run_game_single_player
       elsif num_players == 2
+        p "Player one: Please enter your name."
+        @player_one_name = gets.chomp
+        p "Player two: Please enter your name."
+        @player_two_name = gets.chomp
         run_game_two_player
       end
     end
@@ -31,10 +38,10 @@ class Game
     until @player_one.has_won || @computer.has_won || @board.draw?
       @board.print_board
       p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
-      @player_one.place_piece(@board)
-      @player_one.check_for_horizontal_victory(@board)
-      @player_one.check_for_vertical_victory(@board)
-      @player_one.check_for_diagonal_victory(@board)
+      @player_one.place_piece(@board, "X")
+      @player_one.check_for_horizontal_victory(@board, "X")
+      @player_one.check_for_vertical_victory(@board, "X")
+      @player_one.check_for_diagonal_victory(@board, "X")
 
       if @player_one.has_won
         run_game_single_player
@@ -73,22 +80,22 @@ class Game
   def run_game_two_player
     until @player_one.has_won || @player_two.has_won || @board.draw?
       @board.print_board
-      p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
-      @player_one.place_piece(@board)
-      @player_one.check_for_horizontal_victory(@board)
-      @player_one.check_for_vertical_victory(@board)
-      @player_one.check_for_diagonal_victory(@board)
+      p "#{@player_one_name}: Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
+      @player_one.place_piece(@board, "X")
+      @player_one.check_for_horizontal_victory(@board, "X")
+      @player_one.check_for_vertical_victory(@board, "X")
+      @player_one.check_for_diagonal_victory(@board, "X")
       @board.print_board
 
       if @player_one.has_won
         run_game_two_player
       end
 
-      @player_two.place_piece(@board)
-      @player_two.check_for_horizontal_victory(@board)
-      @player_two.check_for_vertical_victory(@board)
-      @player_two.check_for_diagonal_victory(@board)
-      @board.print_board
+      p "#{@player_two_name}: Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
+      @player_two.place_piece(@board, "O")
+      @player_two.check_for_horizontal_victory(@board, "O")
+      @player_two.check_for_vertical_victory(@board, "O")
+      @player_two.check_for_diagonal_victory(@board, "O")
 
       if @player_two.has_won
         run_game_two_player
@@ -97,13 +104,13 @@ class Game
 
     if @player_one.has_won
       @board.print_board
-      p "Player one wins!"
+      p "#{@player_one_name} wins!"
       @board.reset_board
       @player_one.reset_player
       start
     elsif @player_two.has_won
       @board.print_board
-      p "Player two wins!"
+      p "#{@player_two_name} wins!"
       @board.reset_board
       @player_two.reset_player
       start
@@ -114,6 +121,5 @@ class Game
       start
     end
   end
-
 
 end

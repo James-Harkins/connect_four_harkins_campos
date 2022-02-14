@@ -9,20 +9,20 @@ class Player
     @has_won = false
   end
 
-  def check_for_horizontal_victory(board)
+  def check_for_horizontal_victory(board, piece)
     board.spaces.each do |row|
       row.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "X" &&
-           consecutive_spaces[1] == "X" &&
-           consecutive_spaces[2] == "X" &&
-           consecutive_spaces[3] == "X"
+        if consecutive_spaces[0] == piece &&
+           consecutive_spaces[1] == piece &&
+           consecutive_spaces[2] == piece &&
+           consecutive_spaces[3] == piece
           @has_won = true
         end
       end
     end
   end
 
-  def check_for_vertical_victory(board)
+  def check_for_vertical_victory(board, piece)
     columns = [
       [], [], [], [], [], [], []
     ]
@@ -39,17 +39,17 @@ class Player
 
     columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "X" &&
-           consecutive_spaces[1] == "X" &&
-           consecutive_spaces[2] == "X" &&
-           consecutive_spaces[3] == "X"
+        if consecutive_spaces[0] == piece &&
+           consecutive_spaces[1] == piece &&
+           consecutive_spaces[2] == piece &&
+           consecutive_spaces[3] == piece
           @has_won = true
         end
       end
     end
   end
 
-  def check_for_diagonal_victory(board)
+  def check_for_diagonal_victory(board, piece)
     northeast_columns = [
       [], [], [], [], [], []
     ]
@@ -122,10 +122,10 @@ class Player
 
     northeast_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "X" &&
-           consecutive_spaces[1] == "X" &&
-           consecutive_spaces[2] == "X" &&
-           consecutive_spaces[3] == "X"
+        if consecutive_spaces[0] == piece &&
+           consecutive_spaces[1] == piece &&
+           consecutive_spaces[2] == piece &&
+           consecutive_spaces[3] == piece
           @has_won = true
         end
       end
@@ -133,17 +133,17 @@ class Player
 
     northwest_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "X" &&
-           consecutive_spaces[1] == "X" &&
-           consecutive_spaces[2] == "X" &&
-           consecutive_spaces[3] == "X"
+        if consecutive_spaces[0] == piece &&
+           consecutive_spaces[1] == piece &&
+           consecutive_spaces[2] == piece &&
+           consecutive_spaces[3] == piece
           @has_won = true
         end
       end
     end
   end
 
-  def place_piece(board)
+  def place_piece(board, piece)
     user_input = gets.chomp
 
     valid_space = false
@@ -152,12 +152,12 @@ class Player
 
     if column.nil?
       p "Invalid input. Please select another column."
-      place_piece(board)
+      place_piece(board, piece)
     end
 
     until valid_space || row < -6
       if board.spaces[row][column] == "."
-        board.spaces[row][column] = "X"
+        board.spaces[row][column] = piece
         valid_space = true
       end
       row -= 1
@@ -165,7 +165,7 @@ class Player
 
     if !valid_space
       p "Invalid input. Please select another column."
-      place_piece(board)
+      place_piece(board, piece)
     end
   end
 
