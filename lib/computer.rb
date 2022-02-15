@@ -12,10 +12,7 @@ class Computer
   def check_for_horizontal_victory(board)
     board.spaces.each do |row|
       row.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "O" &&
-           consecutive_spaces[1] == "O" &&
-           consecutive_spaces[2] == "O" &&
-           consecutive_spaces[3] == "O"
+        if consecutive_spaces.all? {|space| space == "O"}
           @has_won = true
         end
       end
@@ -39,10 +36,7 @@ class Computer
 
     columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "O" &&
-           consecutive_spaces[1] == "O" &&
-           consecutive_spaces[2] == "O" &&
-           consecutive_spaces[3] == "O"
+        if consecutive_spaces.all? {|space| space == "O"}
           @has_won = true
         end
       end
@@ -122,10 +116,7 @@ class Computer
 
     northeast_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "O" &&
-           consecutive_spaces[1] == "O" &&
-           consecutive_spaces[2] == "O" &&
-           consecutive_spaces[3] == "O"
+        if consecutive_spaces.all? {|space| space == "O"}
           @has_won = true
         end
       end
@@ -133,10 +124,7 @@ class Computer
 
     northwest_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == "O" &&
-           consecutive_spaces[1] == "O" &&
-           consecutive_spaces[2] == "O" &&
-           consecutive_spaces[3] == "O"
+        if consecutive_spaces.all? {|space| space == "O"}
           @has_won = true
         end
       end

@@ -14,10 +14,7 @@ class Player
   def check_for_horizontal_victory(board, piece)
     board.spaces.each do |row|
       row.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == piece &&
-           consecutive_spaces[1] == piece &&
-           consecutive_spaces[2] == piece &&
-           consecutive_spaces[3] == piece
+        if consecutive_spaces.all? {|space| space == piece}
           @has_won = true
         end
       end
@@ -41,10 +38,7 @@ class Player
 
     columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == piece &&
-           consecutive_spaces[1] == piece &&
-           consecutive_spaces[2] == piece &&
-           consecutive_spaces[3] == piece
+        if consecutive_spaces.all? {|space| space == piece}
           @has_won = true
         end
       end
@@ -124,10 +118,7 @@ class Player
 
     northeast_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == piece &&
-           consecutive_spaces[1] == piece &&
-           consecutive_spaces[2] == piece &&
-           consecutive_spaces[3] == piece
+        if consecutive_spaces.all? {|space| space == piece}
           @has_won = true
         end
       end
@@ -135,10 +126,7 @@ class Player
 
     northwest_columns.each do |column|
       column.each_cons(4) do |consecutive_spaces|
-        if consecutive_spaces[0] == piece &&
-           consecutive_spaces[1] == piece &&
-           consecutive_spaces[2] == piece &&
-           consecutive_spaces[3] == piece
+        if consecutive_spaces.all? {|space| space == piece}
           @has_won = true
         end
       end
