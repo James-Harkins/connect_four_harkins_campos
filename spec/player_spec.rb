@@ -24,7 +24,7 @@ RSpec.describe Player do
       board.spaces[1][2] = "X"
       board.spaces[1][3] = "X"
 
-      @player.check_for_horizontal_victory(board)
+      @player.check_for_horizontal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
 
@@ -36,7 +36,7 @@ RSpec.describe Player do
       board.spaces[4][4] = "X"
       board.spaces[4][5] = "X"
 
-      @player.check_for_horizontal_victory(board)
+      @player.check_for_horizontal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe Player do
       board.spaces[3][0] = "X"
       board.spaces[4][0] = "X"
 
-      @player.check_for_vertical_victory(board)
+      @player.check_for_vertical_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
 
@@ -61,7 +61,7 @@ RSpec.describe Player do
       board.spaces[5][2] = "X"
       board.spaces[6][2] = "X"
 
-      @player.check_for_vertical_victory(board)
+      @player.check_for_vertical_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe Player do
       board.spaces[2][2] = "X"
       board.spaces[1][3] = "X"
 
-      @player.check_for_diagonal_victory(board)
+      @player.check_for_diagonal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
 
@@ -87,7 +87,7 @@ RSpec.describe Player do
       board.spaces[3][4] = "X"
       board.spaces[2][5] = "X"
 
-      @player.check_for_diagonal_victory(board)
+      @player.check_for_diagonal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
 
@@ -99,7 +99,7 @@ RSpec.describe Player do
       board.spaces[4][1] = "X"
       board.spaces[3][0] = "X"
 
-      @player.check_for_diagonal_victory(board)
+      @player.check_for_diagonal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
 
@@ -111,7 +111,7 @@ RSpec.describe Player do
       board.spaces[2][2] = "X"
       board.spaces[1][1] = "X"
 
-      @player.check_for_diagonal_victory(board)
+      @player.check_for_diagonal_victory(board, "X")
       expect(@player.has_won).to eq(true)
     end
   end
@@ -125,7 +125,7 @@ RSpec.describe Player do
       board.spaces[5][2] = "X"
       board.spaces[6][2] = "X"
 
-      @player.check_for_vertical_victory(board)
+      @player.check_for_vertical_victory(board, "X")
       expect(@player.has_won).to eq(true)
       @player.reset_player
       expect(@player.has_won).to eq(false)

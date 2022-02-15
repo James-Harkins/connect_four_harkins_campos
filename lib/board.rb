@@ -18,8 +18,8 @@ class Board
 
   def print_board
     @spaces.each do |row|
-      row.each do |column|
-        print column.to_s + " "
+      row.each do |space|
+        print space + " "
       end
     puts
     end
