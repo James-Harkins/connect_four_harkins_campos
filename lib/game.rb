@@ -15,7 +15,6 @@ class Game
   def start
     p "Welcome to CONNECT FOUR."
     p "Enter p to play. Enter any other key to quit."
-
     @board.print_board
     user_input = gets.chomp
 
@@ -31,11 +30,14 @@ class Game
         @player_two_name = gets.chomp
         run_game_two_player
       end
+    else
+      p "Goodbye!"
+      @player_one.quit = true
     end
   end
 
   def run_game_single_player
-    until @player_one.has_won || @computer.has_won || @board.draw?
+    until @player_one.has_won || @computer.has_won || @board.draw? || @player_one.quit
       @board.print_board
       p "Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
       @player_one.place_piece(@board, "X")
@@ -78,7 +80,7 @@ class Game
   end
 
   def run_game_two_player
-    until @player_one.has_won || @player_two.has_won || @board.draw?
+    until @player_one.has_won || @player_two.has_won || @board.draw? || @player_one.quit
       @board.print_board
       p "#{@player_one_name}: Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."
       @player_one.place_piece(@board, "X")
@@ -89,6 +91,7 @@ class Game
 
       if @player_one.has_won
         run_game_two_player
+        break
       end
 
       p "#{@player_two_name}: Please select a column for piece placement. Your Piece will be placed at the lowest empty slot on the column."

@@ -3,10 +3,12 @@ require './lib/board'
 
 class Player
 
-  attr_reader :has_won
+  attr_accessor :has_won,
+                :quit
 
   def initialize
     @has_won = false
+    @quit = false
   end
 
   def check_for_horizontal_victory(board, piece)
@@ -153,6 +155,7 @@ class Player
     if column.nil?
       p "Invalid input. Please select another column."
       place_piece(board, piece)
+      valid_space = true
     end
 
     until valid_space || row < -6
