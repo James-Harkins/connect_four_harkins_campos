@@ -61,19 +61,19 @@ class Game
 
     if @player_one.has_won
       @board.print_board
-      p "You win!"
+      print "You win!\n\n\n\n\n"
       @board.reset_board
       @player_one.reset_player
       start
     elsif @computer.has_won
       @board.print_board
-      p "Computer wins..."
+      print "Computer wins...\n\n\n\n\n"
       @board.reset_board
       @computer.reset_computer
       start
     elsif @board.draw?
       @board.print_board
-      p "DRAW!"
+      print "DRAW!\n\n\n\n\n"
       @board.reset_board
       start
     end
@@ -107,19 +107,19 @@ class Game
 
     if @player_one.has_won
       @board.print_board
-      p "#{@player_one_name} wins!"
+      print "#{@player_one_name} wins!\n\n\n\n\n"
       @board.reset_board
       @player_one.reset_player
       start
     elsif @player_two.has_won
       @board.print_board
-      p "#{@player_two_name} wins!"
+      print "#{@player_two_name} wins!\n\n\n\n\n"
       @board.reset_board
       @player_two.reset_player
       start
     elsif @board.draw?
       @board.print_board
-      p "DRAW!"
+      print "DRAW!\n\n\n\n\n"
       @board.reset_board
       start
     end
